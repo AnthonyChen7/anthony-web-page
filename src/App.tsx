@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { HeaderBar } from './widgets/components/header-bar/header-bar';
+import { AboutMe } from './widgets/components/about-me/about-me';
 
 class App extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class App extends React.Component {
     return (
       <div style={appStyles}>
         <HeaderBar />
+        <AboutMe />
       </div>
     );
   }
