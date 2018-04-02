@@ -1,0 +1,26 @@
+.app-style {
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas: 
+  "header header"
+  "sidebar ct"
+  "footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.content {
+  grid-area: ct;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
