@@ -9,9 +9,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-style">
-        <div className="header"><HeaderBar /></div>
-        <div className="content"><AboutMe /></div>
-        <div className="footer"><Footer /> </div> 
+        <div>
+          <HeaderBar />
+        </div>
+
+        <div className="content">
+          <AboutMe />
+        </div>
+
+        <div className="footer">
+          <Footer />
+        </div>
       </div>
     );
   }

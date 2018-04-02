@@ -1,26 +1,18 @@
 .app-style {
   padding: 5px 10px;
-  display: grid;
-  grid-template-columns: 0.5fr 2fr;
-  grid-template-rows: 1fr 2fr 1fr;
-  grid-template-areas: 
-  "header header"
-  "sidebar ct"
-  "footer footer";
-}
-
-.header {
-  grid-area: header;
-}
-
-.footer {
-  grid-area: footer;
 }
 
 .content {
-  grid-area: ct;
+
 }
 
-.sidebar {
-  grid-area: sidebar;
+.footer {
+  /** Ensures that footer is always sticked to the bottom */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
