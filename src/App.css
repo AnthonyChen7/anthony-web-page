@@ -7,6 +7,16 @@
   grid-template-columns: 0.3fr 2fr;
 }
 
+.navigation {
+  overflow: auto;
+}
+
+.section {
+  overflow: auto;
+}
+
+
+
 .footer {
   /** Ensures that footer is always sticked to the bottom */
   position: absolute;

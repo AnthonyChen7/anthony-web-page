@@ -17,11 +17,11 @@ class App extends React.Component {
         </div>
 
         <div className="content">
-          <div>
+          <div className="navigation">
             <SideBar />
           </div>
 
-          <div>
+          <div className="section">
             <AboutMe />
           </div>
         </div>
