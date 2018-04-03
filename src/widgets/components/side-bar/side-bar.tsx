@@ -3,16 +3,33 @@ import './side-bar.css';
 import { MenuOptionsEnum } from '../../models/menu-options-enum';
 export class SideBar extends React.Component {
   MenuOptionsEnum = MenuOptionsEnum;
+
+  menuOptionClicked (menuOptionsEnum: MenuOptionsEnum) {
+    alert(menuOptionsEnum);
+  }
+
   render () {
     return (
     <div>
       <ul>
-        <li>{MenuOptionsEnum.AboutMe}</li>
-        <li>{MenuOptionsEnum.WorkExp}</li>
-        <li>{MenuOptionsEnum.Projects}</li>
-        <li>{MenuOptionsEnum.Hobbies}</li>
-        <li>{MenuOptionsEnum.ContactInfo}</li>
-        <li>{MenuOptionsEnum.AboutSite}</li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.AboutMe)}>{MenuOptionsEnum.AboutMe}</span>
+        </li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.WorkExp)}>{MenuOptionsEnum.WorkExp}</span>
+        </li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.Projects)}>{MenuOptionsEnum.Projects}</span>
+        </li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.Hobbies)}>{MenuOptionsEnum.Hobbies}</span>
+        </li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.ContactInfo)}>{MenuOptionsEnum.ContactInfo}</span>
+        </li>
+        <li>
+         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.AboutSite)}>{MenuOptionsEnum.AboutSite}</span>
+        </li>
       </ul>
     </div>);
   }
