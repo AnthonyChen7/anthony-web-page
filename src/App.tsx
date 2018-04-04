@@ -4,8 +4,12 @@ import { HeaderBar } from './widgets/components/header-bar/header-bar';
 import { AboutMe } from './widgets/components/about-me/about-me';
 import { Footer } from './widgets/components/footer/footer';
 import { SideBar } from './widgets/components/side-bar/side-bar';
+import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
 
 class App extends React.Component {
+  onMenuOptionClicked(menuOptionsEnum: MenuOptionsEnum) {
+    console.log(menuOptionsEnum);
+  }
   render() {
     // don't apply styles because here is always rendered first
     // note that header isn't stickied
@@ -18,7 +22,9 @@ class App extends React.Component {
 
         <div className="content">
           <div className="navigation">
-            <SideBar />
+            <SideBar 
+              menuOptionClicked={(currSelectedMenuOption) => this.onMenuOptionClicked(currSelectedMenuOption)}
+            />
           </div>
 
           <div className="section">
