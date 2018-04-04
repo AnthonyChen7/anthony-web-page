@@ -2,12 +2,12 @@ import * as React from 'react';
 import './side-bar.css';
 import { MenuOptionsEnum } from '../../models/menu-options-enum';
 // https://stackoverflow.com/questions/42657792/typescript-react-redux-property-xxx-does-not-exist-on-type-intrinsicattrib
-interface PassedProps extends React.Props<MenuOptionsEnum> {
+interface SideBarProps {
   // currSelectedMenuOption: MenuOptionsEnum
   menuOptionClicked: (menuOptionsEnum: MenuOptionsEnum) => void;
 }
 
-export class SideBar extends React.Component<PassedProps, any> {
+export class SideBar extends React.Component<SideBarProps, any> {
   MenuOptionsEnum = MenuOptionsEnum;
 
   menuOptionClicked (menuOptionsEnum: MenuOptionsEnum) {
