@@ -16,33 +16,32 @@ interface SideBarProps {
 export class SideBar extends React.Component<SideBarProps, SideBarState> {
   MenuOptionsEnum = MenuOptionsEnum;
 
+  menuOptions: MenuOptionsEnum[] = [
+    MenuOptionsEnum.AboutMe,
+    MenuOptionsEnum.WorkExp,
+    MenuOptionsEnum.Projects,
+    MenuOptionsEnum.Hobbies,
+    MenuOptionsEnum.ContactInfo,
+    MenuOptionsEnum.AboutSite
+  ];
   menuOptionClicked (menuOptionsEnum: MenuOptionsEnum) {
     this.setState({currSelectedMenuOption: menuOptionsEnum});
     this.props.menuOptionClicked(menuOptionsEnum);
   }
 
   render () {
+    const listItems = this.menuOptions.map((menuOption, index) => {
+      return (
+        <li key={index}>
+         <span onClick={() => this.menuOptionClicked(menuOption)}>{menuOption}</span>
+        </li>
+      );
+    });
+
     return (
     <div>
       <ul>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.AboutMe)}>{MenuOptionsEnum.AboutMe}</span>
-        </li>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.WorkExp)}>{MenuOptionsEnum.WorkExp}</span>
-        </li>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.Projects)}>{MenuOptionsEnum.Projects}</span>
-        </li>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.Hobbies)}>{MenuOptionsEnum.Hobbies}</span>
-        </li>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.ContactInfo)}>{MenuOptionsEnum.ContactInfo}</span>
-        </li>
-        <li>
-         <span onClick={() => this.menuOptionClicked(MenuOptionsEnum.AboutSite)}>{MenuOptionsEnum.AboutSite}</span>
-        </li>
+        {listItems}
       </ul>
     </div>);
   }
