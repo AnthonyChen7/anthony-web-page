@@ -7,6 +7,15 @@ import { SideBar } from './widgets/components/side-bar/side-bar';
 import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
 
 class App extends React.Component {
+  menuOptions: MenuOptionsEnum[] = [
+    MenuOptionsEnum.AboutMe,
+    MenuOptionsEnum.WorkExp,
+    MenuOptionsEnum.Projects,
+    MenuOptionsEnum.Hobbies,
+    MenuOptionsEnum.ContactInfo,
+    MenuOptionsEnum.AboutSite
+  ];
+
   onMenuOptionClicked(menuOptionsEnum: MenuOptionsEnum) {
     console.log(menuOptionsEnum);
   }
@@ -24,6 +33,7 @@ class App extends React.Component {
           <div className="navigation">
             <SideBar 
               menuOptionClicked={(currSelectedMenuOption) => this.onMenuOptionClicked(currSelectedMenuOption)}
+              menuOptions={this.menuOptions}
             />
           </div>
 
