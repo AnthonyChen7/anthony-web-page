@@ -50,6 +50,10 @@ class App extends React.Component<AppProps, {}> {
   onMenuOptionClicked(menuOptionsEnum: MenuOptionsEnum) {
     this.props.setCurrMenuOption(menuOptionsEnum);
   }
+
+  // shouldShowMenuOption(menuOptionsEnum: MenuOptionsEnum) {
+    
+  // }
   render() {
     // don't apply styles because here is always rendered first
     // note that header isn't stickied
@@ -69,7 +73,6 @@ class App extends React.Component<AppProps, {}> {
           </div>
 
           <div className="section">
-          <div>currMenuOption: {this.props.currMenuOption}</div>
             <AboutMe />
           </div>
         </div>

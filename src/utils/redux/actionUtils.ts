@@ -1,7 +1,6 @@
 import { bindActionCreators as reduxBindActionCreators } from 'redux';
 import { Action, ActionType, ActionCreator, ActionCreatorMap, ActionTypeMap, ActionHandler, TypedActionHandler, Dispatch } from './reduxTypes';
 
-// export function createActionCreator<TPayload>(actionType: ActionType<TPayload>): ActionCreator<TPayload>;
 export function createActionCreator<TPayload>(_actionType: ActionType<TPayload>): ActionCreator<TPayload> {
   // debugger;
   const type = _actionType.toString();
