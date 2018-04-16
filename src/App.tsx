@@ -7,7 +7,6 @@ import { SideBar } from './widgets/components/side-bar/side-bar';
 import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
 import { Dispatch, bindActionCreators, RootState, returnType } from './utils/redux/index';
 import { setCurrMenuOption, getCurrMenuOption } from './states/app/index';
-// import { ViewMainPage } from './activities/view-main-page/view-main-page';
 import createStore, { Store } from './createStore';
 import { Provider, connect } from 'react-redux';
 
@@ -49,9 +48,6 @@ class App extends React.Component<AppProps, {}> {
   }
 
   onMenuOptionClicked(menuOptionsEnum: MenuOptionsEnum) {
-    // console.log(menuOptionsEnum);
-    console.log('currMenuOption');
-    console.log(this.props.currMenuOption);
     this.props.setCurrMenuOption(menuOptionsEnum);
   }
   render() {
@@ -59,7 +55,6 @@ class App extends React.Component<AppProps, {}> {
     // note that header isn't stickied
     // note that style can't be applied to react component, so wrap them inside div and then apply
     return (
-      // <Provider store={store}>
       <div className="app-style">
         <div>
           <HeaderBar />
@@ -83,25 +78,8 @@ class App extends React.Component<AppProps, {}> {
           <Footer />
         </div>
       </div>
-      // </Provider>
     );
   }
-  // render() {
-  //   // don't apply styles because here is always rendered first
-  //   // note that header isn't stickied
-  //   // note that style can't be applied to react component, so wrap them inside div and then apply
-
-  //   const store = createStore();
-  //   return (
-  //     <Provider store={store}>
-  //       <ViewMainPage 
-  //       app = {store.getState().appState}
-  //       setCurrMenuOption = {store.dispatch}
-  //       />
-  //     </Provider>
-  //   );
-  // }
 }
 
-// export default App;
 export default connect<_AppStateProps, _AppDispatchProps>(mapStateToProps, mapDispatchToProps)(App);
