@@ -5,8 +5,36 @@ import { AboutMe } from './widgets/components/about-me/about-me';
 import { Footer } from './widgets/components/footer/footer';
 import { SideBar } from './widgets/components/side-bar/side-bar';
 import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
+import { Dispatch, bindActionCreators, RootState, returnType } from './utils/redux/index';
+import { setCurrMenuOption, getCurrMenuOption } from './states/app/index';
+// import { ViewMainPage } from './activities/view-main-page/view-main-page';
+import createStore, { Store } from './createStore';
+import { Provider, connect } from 'react-redux';
 
-class App extends React.Component {
+function mapDispatchToProps<AppDispatchProps>(dispatch: Dispatch) {
+  return bindActionCreators({
+    setCurrMenuOption
+  }, dispatch);
+}
+
+function mapStateToProps<AppStateProps>(state: RootState) {
+  return {
+    currMenuOption: getCurrMenuOption(state)
+  };
+}
+
+interface AppOwnProps {
+
+}
+
+const dispatchGeneric = returnType(mapDispatchToProps);
+const stateGeneric = returnType(mapStateToProps);
+
+type _AppDispatchProps = typeof dispatchGeneric;
+type _AppStateProps = typeof stateGeneric;
+type AppProps = _AppStateProps & _AppDispatchProps & AppOwnProps;
+
+class App extends React.Component<AppProps, {}> {
   menuOptions: MenuOptionsEnum[] = [
     MenuOptionsEnum.AboutMe,
     MenuOptionsEnum.WorkExp,
@@ -16,14 +44,22 @@ class App extends React.Component {
     MenuOptionsEnum.AboutSite
   ];
 
+  constructor(props: AppProps) {
+    super(props);
+  }
+
   onMenuOptionClicked(menuOptionsEnum: MenuOptionsEnum) {
-    console.log(menuOptionsEnum);
+    // console.log(menuOptionsEnum);
+    console.log('currMenuOption');
+    console.log(this.props.currMenuOption);
+    this.props.setCurrMenuOption(menuOptionsEnum);
   }
   render() {
     // don't apply styles because here is always rendered first
     // note that header isn't stickied
     // note that style can't be applied to react component, so wrap them inside div and then apply
     return (
+      // <Provider store={store}>
       <div className="app-style">
         <div>
           <HeaderBar />
@@ -38,6 +74,7 @@ class App extends React.Component {
           </div>
 
           <div className="section">
+          <div>currMenuOption: {this.props.currMenuOption}</div>
             <AboutMe />
           </div>
         </div>
@@ -46,8 +83,25 @@ class App extends React.Component {
           <Footer />
         </div>
       </div>
+      // </Provider>
     );
   }
+  // render() {
+  //   // don't apply styles because here is always rendered first
+  //   // note that header isn't stickied
+  //   // note that style can't be applied to react component, so wrap them inside div and then apply
+
+  //   const store = createStore();
+  //   return (
+  //     <Provider store={store}>
+  //       <ViewMainPage 
+  //       app = {store.getState().appState}
+  //       setCurrMenuOption = {store.dispatch}
+  //       />
+  //     </Provider>
+  //   );
+  // }
 }
 
-export default App;
+// export default App;
+export default connect<_AppStateProps, _AppDispatchProps>(mapStateToProps, mapDispatchToProps)(App);

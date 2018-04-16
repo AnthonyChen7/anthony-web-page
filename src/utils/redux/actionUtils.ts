@@ -2,9 +2,9 @@ import { bindActionCreators as reduxBindActionCreators } from 'redux';
 import { Action, ActionType, ActionCreator, ActionCreatorMap, ActionTypeMap, ActionHandler, TypedActionHandler, Dispatch } from './reduxTypes';
 
 // export function createActionCreator<TPayload>(actionType: ActionType<TPayload>): ActionCreator<TPayload>;
-export function createActionCreator<TPayload>(actionType: ActionType<TPayload>): ActionCreator<TPayload> {
-  debugger;
-  const type = actionType.toString();
+export function createActionCreator<TPayload>(_actionType: ActionType<TPayload>): ActionCreator<TPayload> {
+  // debugger;
+  const type = _actionType.toString();
   return Object.assign((payload: TPayload): Action<TPayload> => ({ type, payload }), { type });
 }
 
@@ -27,7 +27,7 @@ export function bindActionCreators<T extends ActionCreatorMap>(actionCreators: T
 }
 
 export function createActionHandler<TState>() {
-  return <TPayload>(actionType: ActionType<TPayload>, handler: ActionHandler<TState, TPayload>): TypedActionHandler<TState, TPayload> => {
-    return Object.assign(handler, { actionType: actionType.toString() });
+  return <TPayload>(_actionType: ActionType<TPayload>, handler: ActionHandler<TState, TPayload>): TypedActionHandler<TState, TPayload> => {
+    return Object.assign(handler, { actionType: _actionType.toString() });
   };
 }
