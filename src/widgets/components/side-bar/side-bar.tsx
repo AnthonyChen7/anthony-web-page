@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './side-bar.css';
 import { MenuOptionsEnum } from '../../models/menu-options-enum';
+import { Icon } from 'semantic-ui-react';
 // https://stackoverflow.com/questions/42657792/typescript-react-redux-property-xxx-does-not-exist-on-type-intrinsicattrib
 
 interface SideBarState {
@@ -24,6 +25,29 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
     this.props.menuOptionClicked(menuOptionsEnum);
   }
 
+  renderIcons (menuOptionsEnum: MenuOptionsEnum) {
+    switch (menuOptionsEnum) {
+      case MenuOptionsEnum.AboutSite:
+        return (<Icon name="info circle" />);
+      
+      case MenuOptionsEnum.ContactInfo:
+        return (<Icon name="talk" />);
+
+      case MenuOptionsEnum.Hobbies:
+        return (<Icon name="book" />);
+
+      case MenuOptionsEnum.Projects:
+        return (<Icon name="folder" />);
+
+      case MenuOptionsEnum.WorkExp:
+        return (<Icon name="industry" />);
+
+      default:
+      case MenuOptionsEnum.AboutMe:
+        return (<Icon name="user circle" />);
+    }
+  }
+
   render () {
 
     let listItems: JSX.Element[] = [];
@@ -31,6 +55,9 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
       listItems = this.props.menuOptions.map((menuOption, index) => {
         return (
           <li key={index}>
+          <span>
+              {this.renderIcons(menuOption)}
+            </span>
             <span onClick={() => this.menuOptionClicked(menuOption)}>
               {menuOption}
             </span>
