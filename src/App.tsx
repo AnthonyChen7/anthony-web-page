@@ -2,6 +2,11 @@ import * as React from 'react';
 import './App.css';
 import { HeaderBar } from './widgets/components/header-bar/header-bar';
 import { AboutMe } from './widgets/components/about-me/about-me';
+import { WorkExp } from './widgets/components/work-exp/work-exp';
+import { Projects } from './widgets/components/projects/projects';
+import { Hobbies } from './widgets/components/hobbies/hobbies';
+import { ContactInfo } from './widgets/components/contact-info/contact-info';
+import { AboutSite } from './widgets/components/about-site/about-site';
 import { Footer } from './widgets/components/footer/footer';
 import { SideBar } from './widgets/components/side-bar/side-bar';
 import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
@@ -54,19 +59,19 @@ class App extends React.Component<AppProps, {}> {
   showCorrectContent(menuOptionsEnum: MenuOptionsEnum) {
     switch (menuOptionsEnum) {
       case MenuOptionsEnum.AboutSite:
-        return (<div>AboutSite</div>);
+        return (<AboutSite />);
       
       case MenuOptionsEnum.ContactInfo:
-        return (<div>ContactInfo</div>);
+        return (<ContactInfo />);
 
       case MenuOptionsEnum.Hobbies:
-        return (<div>Hobbies</div>);
+        return (<Hobbies />);
 
       case MenuOptionsEnum.Projects:
-        return (<div>Projects</div>);
+        return (<Projects />);
 
       case MenuOptionsEnum.WorkExp:
-        return (<div>WorkExp</div>);
+        return (<WorkExp />);
 
       default:
       case MenuOptionsEnum.AboutMe:
@@ -92,7 +97,6 @@ class App extends React.Component<AppProps, {}> {
           </div>
 
           <div className="section">
-            {/* <AboutMe /> */}
             {this.showCorrectContent(this.props.currMenuOption)}
           </div>
         </div>
