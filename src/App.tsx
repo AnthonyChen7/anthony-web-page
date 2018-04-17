@@ -51,9 +51,28 @@ class App extends React.Component<AppProps, {}> {
     this.props.setCurrMenuOption(menuOptionsEnum);
   }
 
-  // shouldShowMenuOption(menuOptionsEnum: MenuOptionsEnum) {
-    
-  // }
+  showCorrectContent(menuOptionsEnum: MenuOptionsEnum) {
+    switch (menuOptionsEnum) {
+      case MenuOptionsEnum.AboutSite:
+        return (<div>AboutSite</div>);
+      
+      case MenuOptionsEnum.ContactInfo:
+        return (<div>ContactInfo</div>);
+
+      case MenuOptionsEnum.Hobbies:
+        return (<div>Hobbies</div>);
+
+      case MenuOptionsEnum.Projects:
+        return (<div>Projects</div>);
+
+      case MenuOptionsEnum.WorkExp:
+        return (<div>WorkExp</div>);
+
+      default:
+      case MenuOptionsEnum.AboutMe:
+        return (<AboutMe />);
+    }
+  }
   render() {
     // don't apply styles because here is always rendered first
     // note that header isn't stickied
@@ -73,7 +92,8 @@ class App extends React.Component<AppProps, {}> {
           </div>
 
           <div className="section">
-            <AboutMe />
+            {/* <AboutMe /> */}
+            {this.showCorrectContent(this.props.currMenuOption)}
           </div>
         </div>
 
