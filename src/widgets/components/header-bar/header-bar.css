@@ -1,5 +1,16 @@
-.header-style {
+.header-container {
     display: flex;
+}
+
+.header-icons-container {
+    display:flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.header-title-container {
+    flex:1;
+    display:flex;
     justify-content: center;
 }
 

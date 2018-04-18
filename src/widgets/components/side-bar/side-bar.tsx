@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './side-bar.css';
 import { MenuOptionsEnum } from '../../models/menu-options-enum';
-import { Icon } from 'semantic-ui-react';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 // https://stackoverflow.com/questions/42657792/typescript-react-redux-property-xxx-does-not-exist-on-type-intrinsicattrib
 
 interface SideBarState {
@@ -54,23 +54,33 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
     if (this.props.menuOptions) {
       listItems = this.props.menuOptions.map((menuOption, index) => {
         return (
-          <li key={index}>
-          <span>
-              {this.renderIcons(menuOption)}
-            </span>
-            <span onClick={() => this.menuOptionClicked(menuOption)}>
-              {menuOption}
-            </span>
-          </li>
+          // <li key={index}>
+          // <span>
+          //     {this.renderIcons(menuOption)}
+          //   </span>
+          //   <span onClick={() => this.menuOptionClicked(menuOption)}>
+          //     {menuOption}
+          //   </span>
+          // </li>
+          <Menu.Item name={menuOption} key={index} onClick={() => this.menuOptionClicked(menuOption)}>
+            {this.renderIcons(menuOption)}
+            {menuOption}
+          </Menu.Item>
         );
       });
     }
 
     return (
-    <div>
-      <ul>
+    // <div>
+    //   <ul>
+    //     {listItems}
+    //   </ul>
+    // </div>
+    <Sidebar.Pushable as={Segment}>
+      <Sidebar as={Menu} animation="slide along" width="thin" visible={true} icon="labeled" vertical={true} inverted={true}>
         {listItems}
-      </ul>
-    </div>);
+      </Sidebar>
+    </Sidebar.Pushable>
+    );
   }
 }
