@@ -11,19 +11,21 @@ import { Footer } from './widgets/components/footer/footer';
 import { SideBar } from './widgets/components/side-bar/side-bar';
 import { MenuOptionsEnum } from './widgets/models/menu-options-enum';
 import { Dispatch, bindActionCreators, RootState, returnType } from './utils/redux/index';
-import { setCurrMenuOption, getCurrMenuOption } from './states/app/index';
+import { setCurrMenuOption, getCurrMenuOption, shouldShowSideBar, setSideBarVisibility } from './states/app/index';
 import createStore, { Store } from './createStore';
 import { Provider, connect } from 'react-redux';
 
 function mapDispatchToProps<AppDispatchProps>(dispatch: Dispatch) {
   return bindActionCreators({
-    setCurrMenuOption
+    setCurrMenuOption,
+    setSideBarVisibility
   }, dispatch);
 }
 
 function mapStateToProps<AppStateProps>(state: RootState) {
   return {
-    currMenuOption: getCurrMenuOption(state)
+    currMenuOption: getCurrMenuOption(state),
+    showSideBar: shouldShowSideBar(state)
   };
 }
 
@@ -56,6 +58,10 @@ class App extends React.Component<AppProps, {}> {
     this.props.setCurrMenuOption(menuOptionsEnum);
   }
 
+  onShowSideBar(_showSideBar: boolean) {
+    this.props.setSideBarVisibility(_showSideBar);
+  }
+
   showCorrectContent(menuOptionsEnum: MenuOptionsEnum) {
     switch (menuOptionsEnum) {
       case MenuOptionsEnum.AboutSite:
@@ -85,7 +91,10 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div className="app-style">
         <div>
-          <HeaderBar />
+          <HeaderBar
+            shouldShowSideBar={(_showSideBar) => this.onShowSideBar(_showSideBar)}
+            showSideBar={this.props.showSideBar}
+          />
         </div>
 
         <div className="content">

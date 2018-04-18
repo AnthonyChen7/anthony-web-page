@@ -13,8 +13,16 @@ const setCurrMenuOption = handleAction(appActionTypes.SET_CURR_MENU_OPTION, (sta
     });
 });
 
-const initialState: AppState = {currMenuOption: MenuOptionsEnum.AboutMe};
+const _showSideBar = handleAction(appActionTypes.SET_SIDE_BAR_VISIBILITY, (state, action) => {
+  const showSideBar: boolean = action.payload;
+  return Object.assign({}, state, {
+    showSideBar: showSideBar
+  });
+});
+
+const initialState: AppState = {currMenuOption: MenuOptionsEnum.AboutMe, showSideBar: false};
 
 export const appReducer = createReducer(initialState, [
-  setCurrMenuOption
+  setCurrMenuOption,
+  _showSideBar
 ]);
