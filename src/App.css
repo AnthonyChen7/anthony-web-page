@@ -4,7 +4,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 0.2fr 2fr;
+  grid-template-columns: 0.5fr 2fr;
 }
 
 .navigation {
@@ -14,8 +14,6 @@
 .section {
   overflow: auto;
 }
-
-
 
 .footer {
   /** Ensures that footer is always sticked to the bottom */

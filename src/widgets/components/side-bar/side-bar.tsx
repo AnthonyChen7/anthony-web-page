@@ -11,6 +11,7 @@ interface SideBarState {
 interface SideBarProps {
   menuOptionClicked: (menuOptionsEnum: MenuOptionsEnum) => void;
   menuOptions: MenuOptionsEnum[];
+  isVisible: boolean;
 }
 
 export class SideBar extends React.Component<SideBarProps, SideBarState> {
@@ -54,14 +55,6 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
     if (this.props.menuOptions) {
       listItems = this.props.menuOptions.map((menuOption, index) => {
         return (
-          // <li key={index}>
-          // <span>
-          //     {this.renderIcons(menuOption)}
-          //   </span>
-          //   <span onClick={() => this.menuOptionClicked(menuOption)}>
-          //     {menuOption}
-          //   </span>
-          // </li>
           <Menu.Item name={menuOption} key={index} onClick={() => this.menuOptionClicked(menuOption)}>
             {this.renderIcons(menuOption)}
             {menuOption}
@@ -71,16 +64,11 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
     }
 
     return (
-    // <div>
-    //   <ul>
-    //     {listItems}
-    //   </ul>
-    // </div>
-    <Sidebar.Pushable as={Segment}>
-      <Sidebar as={Menu} animation="slide along" width="thin" visible={true} icon="labeled" vertical={true} inverted={true}>
-        {listItems}
-      </Sidebar>
-    </Sidebar.Pushable>
+      <Segment horizontal={true} basic={true}>
+        <Menu vertical={true}>
+            {listItems}
+        </Menu>
+      </Segment>
     );
   }
 }

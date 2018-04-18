@@ -14,6 +14,7 @@ import { Dispatch, bindActionCreators, RootState, returnType } from './utils/red
 import { setCurrMenuOption, getCurrMenuOption, shouldShowSideBar, setSideBarVisibility } from './states/app/index';
 import createStore, { Store } from './createStore';
 import { Provider, connect } from 'react-redux';
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 
 function mapDispatchToProps<AppDispatchProps>(dispatch: Dispatch) {
   return bindActionCreators({
@@ -99,17 +100,18 @@ class App extends React.Component<AppProps, {}> {
 
         <div className="content">
           <div className="navigation">
-            <SideBar 
-              menuOptionClicked={(currSelectedMenuOption) => this.onMenuOptionClicked(currSelectedMenuOption)}
-              menuOptions={this.menuOptions}
-            />
+              <SideBar 
+                menuOptionClicked={(currSelectedMenuOption) => this.onMenuOptionClicked(currSelectedMenuOption)}
+                menuOptions={this.menuOptions}
+                isVisible={this.props.showSideBar}
+              />
           </div>
 
           <div className="section">
             {this.showCorrectContent(this.props.currMenuOption)}
           </div>
         </div>
-
+        
         <div className="footer">
           <Footer />
         </div>
