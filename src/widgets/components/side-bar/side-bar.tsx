@@ -4,17 +4,18 @@ import { MenuOptionsEnum } from '../../models/menu-options-enum';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 // https://stackoverflow.com/questions/42657792/typescript-react-redux-property-xxx-does-not-exist-on-type-intrinsicattrib
 
-interface SideBarState {
-  currSelectedMenuOption?: MenuOptionsEnum;
-}
+// interface SideBarState {
+//   currSelectedMenuOption?: MenuOptionsEnum;
+// }
 
 interface SideBarProps {
   menuOptionClicked: (menuOptionsEnum: MenuOptionsEnum) => void;
   menuOptions: MenuOptionsEnum[];
+  currSelectedMenuOption: MenuOptionsEnum;
   isVisible: boolean;
 }
 
-export class SideBar extends React.Component<SideBarProps, SideBarState> {
+export class SideBar extends React.Component<SideBarProps, {}> {
   MenuOptionsEnum = MenuOptionsEnum;
   constructor(props: SideBarProps) {
     super(props);
@@ -55,9 +56,15 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
     if (this.props.menuOptions) {
       listItems = this.props.menuOptions.map((menuOption, index) => {
         return (
-          <Menu.Item name={menuOption} key={index} onClick={() => this.menuOptionClicked(menuOption)}>
-            {this.renderIcons(menuOption)}
-            {menuOption}
+          <Menu.Item 
+            name={menuOption} 
+            key={index} 
+            onClick={() => this.menuOptionClicked(menuOption)}
+            active={this.props.currSelectedMenuOption === menuOption}
+            color={this.props.currSelectedMenuOption === menuOption ? 'blue' : undefined}
+          >
+              {this.renderIcons(menuOption)}
+              {menuOption}
           </Menu.Item>
         );
       });
@@ -65,7 +72,7 @@ export class SideBar extends React.Component<SideBarProps, SideBarState> {
 
     return (
       <Segment horizontal={true} basic={true}>
-        <Menu vertical={true}>
+        <Menu vertical={true} inverted={true}>
             {listItems}
         </Menu>
       </Segment>

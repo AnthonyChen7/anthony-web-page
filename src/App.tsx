@@ -100,7 +100,8 @@ class App extends React.Component<AppProps, {}> {
 
         <div className="content">
           <div className="navigation">
-              <SideBar 
+              <SideBar
+                currSelectedMenuOption={this.props.currMenuOption}
                 menuOptionClicked={(currSelectedMenuOption) => this.onMenuOptionClicked(currSelectedMenuOption)}
                 menuOptions={this.menuOptions}
                 isVisible={this.props.showSideBar}
