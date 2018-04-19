@@ -5,7 +5,6 @@ import { AboutMe } from './widgets/components/about-me/about-me';
 import { WorkExp } from './widgets/components/work-exp/work-exp';
 import { Projects } from './widgets/components/projects/projects';
 import { Hobbies } from './widgets/components/hobbies/hobbies';
-import { ContactInfo } from './widgets/components/contact-info/contact-info';
 import { AboutSite } from './widgets/components/about-site/about-site';
 import { Footer } from './widgets/components/footer/footer';
 import { SideBar } from './widgets/components/side-bar/side-bar';
@@ -47,7 +46,6 @@ class App extends React.Component<AppProps, {}> {
     MenuOptionsEnum.WorkExp,
     MenuOptionsEnum.Projects,
     MenuOptionsEnum.Hobbies,
-    MenuOptionsEnum.ContactInfo,
     MenuOptionsEnum.AboutSite
   ];
 
@@ -68,9 +66,6 @@ class App extends React.Component<AppProps, {}> {
       case MenuOptionsEnum.AboutSite:
         return (<AboutSite />);
       
-      case MenuOptionsEnum.ContactInfo:
-        return (<ContactInfo />);
-
       case MenuOptionsEnum.Hobbies:
         return (<Hobbies />);
 

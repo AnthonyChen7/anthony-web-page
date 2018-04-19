@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './header-bar.css';
 import { Header, Segment, Button, Icon } from 'semantic-ui-react';
-
+// https://stackoverflow.com/questions/43211390/aligning-elements-left-center-and-right-in-flexbox
 interface HeaderBarProps {
   shouldShowSideBar: (isVisible: boolean) => void;
   showSideBar: boolean;
@@ -21,7 +21,7 @@ export class HeaderBar extends React.Component<HeaderBarProps, {}> {
       <Segment className="header" horizontal={true} basic={true}>
           <Header as="h1" block={true} inverted={true} className="header-container">
             <div className="header-icons-container">
-              <Icon name={this.showCorrectIcon(this.props.showSideBar)} onClick={() => this.props.shouldShowSideBar(!this.props.showSideBar)}/>
+              {/* <Icon name={this.showCorrectIcon(this.props.showSideBar)} onClick={() => this.props.shouldShowSideBar(!this.props.showSideBar)}/> */}
             </div>
             <div className="header-title-container">
               <Header.Content>

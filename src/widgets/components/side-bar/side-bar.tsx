@@ -31,9 +31,6 @@ export class SideBar extends React.Component<SideBarProps, {}> {
     switch (menuOptionsEnum) {
       case MenuOptionsEnum.AboutSite:
         return (<Icon name="info circle" />);
-      
-      case MenuOptionsEnum.ContactInfo:
-        return (<Icon name="talk" />);
 
       case MenuOptionsEnum.Hobbies:
         return (<Icon name="book" />);

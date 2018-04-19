@@ -3,6 +3,5 @@ export enum MenuOptionsEnum {
   WorkExp = 'Work Experience',
   Projects = 'Projects',
   Hobbies = 'Hobbies',
-  ContactInfo = 'Contact Info',
   AboutSite = 'About this site'
 }
